@@ -7,7 +7,7 @@ class GameObject {
 
         this.sprite = new Sprite({
             gameObject: this,
-            src: args.src || "./images/characters/player-sprite.png"
+            src: args.src || "./images/characters/npc.gif"
         })
     }   
 
