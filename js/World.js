@@ -8,14 +8,20 @@ class World {
     
     startGameLoop() {
         const step = () => {
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.map.drawLowerImage(this.ctx);
+
+            const cameraPerson = this.map.gameObjects.player;
 
             Object.values(this.map.gameObjects).forEach(gameObject => {
                 gameObject.update({
                     keys: this.directionInput.getDirections()
                 });
-                gameObject.sprite.draw(this.ctx);
+            })
+
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.map.drawLowerImage(this.ctx, cameraPerson);
+
+            Object.values(this.map.gameObjects).forEach(gameObject => {
+                gameObject.sprite.draw(this.ctx, cameraPerson);
             })
             
             requestAnimationFrame(() => {

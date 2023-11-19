@@ -9,24 +9,30 @@ class WorldMap {
         this.upperImage.src = args.upperSrc;
     }
 
-    drawLowerImage(ctx) {
-        ctx.drawImage(this.lowerImage, 0, 0);
+    drawLowerImage(ctx, cameraPerson) {
+        ctx.drawImage(this.lowerImage, 462 - cameraPerson.x, 288 - cameraPerson.y);
     }
 
-    drawUppderImage(ctx) {
-        ctx.drawImage(this.upperImage, 0, 0);
+    drawUppderImage(ctx, cameraPerson) {
+        ctx.drawImage(this.upperImage, 462 - cameraPerson.x, 288 - cameraPerson.y);
     }
 }
 
 window.WorldMaps = {
     Island: {
-        lowerSrc: "./images/maps/island.png",
-        upperSrc: "./images/maps/island.png",
+        lowerSrc: "./images/maps/village.jpg",
+        upperSrc: "./images/maps/village.jpg",
         gameObjects: {
             player: new Person({
                 isPlayer: true,
-                x: 495, 
-                y: 250
+                x: 900, 
+                y: 400,
+                src: "./images/characters/player-sprite.png"
+            }),
+            npc: new Person({
+                isPlayer: false,
+                x: 1200,
+                y: 450,
             })
         }
     }

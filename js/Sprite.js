@@ -59,9 +59,9 @@ class Sprite {
         this.animationFrameProgress = this.animationFrameLimit;
     }
 
-    draw(ctx) {
-        const x = this.gameObject.x - 6;
-        const y = this.gameObject.y - 32;
+    draw(ctx, cameraPerson) {
+        const x = this.gameObject.x - 32 + 462 - cameraPerson.x;
+        const y = this.gameObject.y - 6 + 288 - cameraPerson.y;
 
         const [frameY, frameX] = this.getFrame();
         // confused X and Y in the animations array. So changing that here is the easiest fix :D
